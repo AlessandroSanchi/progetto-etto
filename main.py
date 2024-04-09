@@ -1,7 +1,7 @@
 import random
 import os
 import art
-money = 0
+Money = 0
 def inputpage():
  print("-1 Farm")
  print("-2 Shop")
@@ -9,27 +9,38 @@ def inputpage():
  print("-4 Quit")
 
 oggetti = ["sassi"]
->>> tprint("E")
-print(f"money:{money}")
+from art import *
+Art= text2art("Untilted rng game") # Return ASCII text (default font) and default chr_ignore=True 
+print(Art)
+
+print(f"Money:{Money}")
 inputpage()
 
-input = input("che si fa?")
+condizione = True
 
 
-
-match input:
-    case "1":
+while condizione == True:
+ input = input("che si fa? ")
+ match input:
+      case "1":
         print("Farming...")#"banning random people", "getting these money"])
+        print("hai trovato un sasso")
+        Money = Money + 1
+        print(Money)
+        condizione == True
+        
 
-    case "2":
-      print("Welcome to the Shop!")
+      case "2":
+        print("Welcome to the Shop!")
 
 
 
-    case "3": 
-      print("Fighting")
+      case "3": 
+        print("Fighting...")
 
-    case "4":
-      print("Leaving...")
+
+      case "4":
+        print("Leaving...")
+        condizione = False
     
 
