@@ -21,7 +21,7 @@ condizione = True
 
 while condizione == True:
  input = input("che si fa? ")
- match input:
+match input:
       case "1":
         print("Farming...")#"banning random people", "getting these money"])
         print("hai trovato un sasso")
