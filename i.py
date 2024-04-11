@@ -1,11 +1,12 @@
 import random
 import os
 from art import *
+import time
 
 Money = 0
 oggetti = ["Rock", "Gem", "monete d'oro", "perle"]
 e = True
-
+cooldowntime = 3
 
 def inputpage():
     print("-1 Farm")
@@ -27,12 +28,11 @@ while condizione:
 
     if choice == "1":
      e = True
-     while e: 
-        print("Farming...")  
+     while e:
+        print("Farming...")
 
         # Simulate finding different items
-        randomList = random.choices(
-        oggetti, weights=(80, 10, 5, 2), k=1)
+        randomList = random.choices(oggetti, weights=(80, 10, 5, 2), k=1)
         if randomList[0] == "Rock":
             print("You found a rock!")
             Money += 1
@@ -47,13 +47,26 @@ while condizione:
             Money += 8
 
         print(f"Money: {Money}")
+        time.sleep(cooldowntime)
+        e = False
+        menu = input("Write whatever to stop farming or type 'c' to continue: ")
+        if menu == "c":
+            e = True
+
+
+
+        
+
+        
+
+         
 
         # Allow continuous farming until another action is chosen
-        farm_choice = input("Continue farming? (Y/N): ")
-        if farm_choice.lower() == "n" or farm_choice.lower() == "N":
-            e = False
-        elif farm_choice.lower() == "y" or farm_choice.lower() == "Y":
-                continue
+        #farm_choice = input("Continue farming? (Y/N): ")
+        #if farm_choice.lower() == "n" or farm_choice.lower() == "N":
+         #   e = False
+        #elif farm_choice.lower() == "y" or farm_choice.lower() == "Y":
+         #       continue
                
 
     elif choice == "2":
