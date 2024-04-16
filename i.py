@@ -1,9 +1,9 @@
-import random
+import random                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 import time
 
 Money = 1000000
 bonus_multiplier = 1
-godpass = True # non potenziamento rotto
+godpass = False # non potenzialmente rotto
 X2Price = 150  # Prezzo iniziale del raddoppia soldi
 forest_items = {
     "Rock": 1,
@@ -53,7 +53,7 @@ Void_items = {
 }
 
 if  godpass:
- bonus_multiplier = bonus_multiplier * 15394
+ bonus_multiplier = bonus_multiplier * 15394  #cambia il numero se vuoi tip: " 999999999999999999999999999999 "
  
 cooldowntime = 1
 cave_unlocked = False
