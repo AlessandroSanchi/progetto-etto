@@ -3,6 +3,7 @@ import time
 
 Money = 1000000
 bonus_multiplier = 1
+godpass = True # non potenziamento rotto
 X2Price = 150  # Prezzo iniziale del raddoppia soldi
 forest_items = {
     "Rock": 1,
@@ -51,9 +52,9 @@ Void_items = {
     "Stellar Mirage": 300
 }
 
-
-
-
+if  godpass:
+ bonus_multiplier = bonus_multiplier * 15394
+ 
 cooldowntime = 1
 cave_unlocked = False
 jungle_unlocked = False
@@ -72,22 +73,27 @@ def explore_world(world):
     global Money, cave_unlocked, bonus_multiplier
     if world == "Forest":
         print("Farming in the Forest...")
+        print()
         items = forest_items
         weights = (40, 15, 10, 8, 5, 3, 2)
     elif world == "Cave":
         print("Farming in the Cave...")
+        print()
         items = cave_items
         weights = (40, 15, 10, 8, 5)
     elif world == "Jungle":
         print("Farming in the Jungle...")
+        print()
         items = Jungle_items
         weights = (40, 15, 10, 8, 5, 3, 2)
     elif world == "Desert":
         print("Farming in the Desert...")
+        print()
         items = Desert_Items
         weights = (40, 15, 10, 8, 5, 3, 2)
     elif world == "Void":
         print("Farming in the Void...")
+        print()
         items = Void_items
         weights = (40, 20, 15, 10, 6, 5, 1)
         
@@ -98,6 +104,7 @@ def explore_world(world):
         print(f"You found {random_item}! Added ${money_added} (+${money_added}) Total money: {Money}")
         time.sleep(cooldowntime)
         menu = input("Write whatever to stop exploring or type 'c' to continue: ")
+        print()
         if menu != "c":
             break
 
@@ -131,6 +138,10 @@ while condizione:
         else:
             print("5. Void (Unlock for $1M)")
         world_choice = input("Enter your choice: ")
+
+
+
+
         # Forest Farming
         if world_choice == "1":
             explore_world("Forest")
@@ -175,7 +186,7 @@ while condizione:
                 Void_unlocked = True
                 print("You bought a ticket to the Void and unlocked it!")
                 explore_world("Void")
-            elif jungle_unlocked: 
+            elif Void_unlocked: 
                 explore_world("Void")
             else:
                 print("Sorry, you don't have enough money to unlock the Void.")

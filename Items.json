@@ -1,0 +1,47 @@
+[{
+    "Rock": 1,
+    "Gem": 5,
+    "Silver coins": 6,
+    "Gold coins": 8,
+    "Pearl": 10,
+    "Diamond": 20,
+    "Ancient relic": 50
+}
+,{
+    "Crystal": 2,
+    "Glowing mushroom": 3,
+    "Artifact": 10,
+    "Rare mineral": 15,
+    "Fossil": 25
+    
+}
+
+,{
+    "Rare Orchid": 5,
+    "Dragon Fruit": 9,
+    "Jaguar Leaf": 12,
+    "Elephant Ivory": 15,
+    "Ara Plumage": 23,
+    "Ancient Tribal Mask": 35,
+    "Jungle Emerald": 50
+}
+
+,{
+    "Cactus Flower": 8,
+    "Sandstone Carving": 14,
+    "Mirage Crystal": 19,
+    "Scarab Beetle": 24,
+    "Sunset Agate": 38,
+    "Nomad Turban": 57,
+    "Sands of Time": 83
+}
+,{
+    "Cosmic Dust": 75,
+    "Nebula Shard": 90,
+    "Black Hole Orb": 110,
+    "Celestial Echo": 125,
+    "Galactic Nova": 135,
+    "Astral Beacon": 150,
+    "Stellar Mirage": 300
+}
+]
