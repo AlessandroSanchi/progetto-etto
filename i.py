@@ -225,4 +225,4 @@ while condizione:
         print("Leaving...")
         condizione = False
 
-print("Goodbye! Thanks for playing Untitled RNG.")anch
+print("Goodbye! Thanks for playing Untitled RNG.")
