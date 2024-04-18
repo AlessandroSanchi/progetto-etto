@@ -1,9 +1,9 @@
 import random                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 import time
 
-Money = 1000000
+Money = 104
 bonus_multiplier = 1
-godpass = False # non potenzialmente rotto
+godpass = True # non potenzialmente rotto
 X2Price = 150  # Prezzo iniziale del raddoppia soldi
 forest_items = {
     "Rock": 1,
@@ -15,11 +15,11 @@ forest_items = {
     "Ancient relic": 50
 }
 cave_items = {
-    "Crystal": 2,
+    "Crystal": 7,
     "Glowing mushroom": 3,
-    "Artifact": 10,
-    "Rare mineral": 15,
-    "Fossil": 25
+    "Artifact": 15,
+    "Rare mineral": 30,
+    "Fossil": 50
     
 }
 
@@ -62,6 +62,10 @@ Desert_unlocked = False
 Void_unlocked = False
 pass_remaining = 10  # x2 passes stock
 
+goblin = 10 #hp 
+Romagna = 50 #hp
+
+
 def inputpage():
     print("-1 Farm")
     print("-2 Shop")
@@ -80,7 +84,7 @@ def explore_world(world):
         print("Farming in the Cave...")
         print()
         items = cave_items
-        weights = (40, 15, 10, 8, 5)
+        weights = (30, 15, 10, 8, 6)
     elif world == "Jungle":
         print("Farming in the Jungle...")
         print()
@@ -101,7 +105,7 @@ def explore_world(world):
         random_item = random.choices(list(items.keys()), weights=weights, k=1)[0]
         money_added = items.get(random_item, 0) * bonus_multiplier
         Money += money_added
-        print(f"You found {random_item}! Added ${money_added} (+${money_added}) Total money: {Money}")
+        print(f"You found {random_item}! Added ${money_added} (+${money_added}) Total money: {Money}$")
         time.sleep(cooldowntime)
         menu = input("Write whatever to stop exploring or type 'c' to continue: ")
         print()
@@ -200,10 +204,12 @@ while condizione:
     elif choice == "2":
         print("Welcome to the Shop!")
         if pass_remaining > 0:
-            print(f"1. X2Pass (Costs ${X2Price}) - {pass_remaining} remaining")
+            print(f"-1. X2Pass (Costs ${X2Price}) - {pass_remaining} remaining")
         else:
-            print("1. X2Pass - Out of stock")
-        print("2. Leave Shop")
+            print("-1. X2Pass - Out of stock")
+
+        print("-2 ")    
+        print("-3. Leave Shop")
         shop_choice = input("What would you like to buy? ")
         if shop_choice == "1" and pass_remaining > 0:
             if Money >= X2Price:
@@ -225,6 +231,7 @@ while condizione:
     # Fights
     elif choice == "3":
         print("Fighting...")
+
 
 
 

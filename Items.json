@@ -8,11 +8,12 @@
     "Ancient relic": 50
 }
 ,{
-    "Crystal": 2,
+    "Crystal": 7,
     "Glowing mushroom": 3,
-    "Artifact": 10,
-    "Rare mineral": 15,
-    "Fossil": 25
+    "Artifact": 15,
+    "Rare mineral": 30,
+    "Fossil": 50
+    
     
 }
 
