@@ -5,6 +5,11 @@ Money = 104
 bonus_multiplier = 1
 godpass = False # non potenzialmente rotto (dev cheat)
 X2Price = 150  # Prezzo iniziale del raddoppia soldi
+CoinSword =  1
+swordequipped = ""
+
+
+
 forest_items = {
     "Rock": 1,
     "Gem": 5,
@@ -61,6 +66,7 @@ jungle_unlocked = False
 Desert_unlocked = False
 Void_unlocked = False
 pass_remaining = 10  # x2 passes stock
+coinswordremaining = 1
 
 goblin = 10 #hp 
 Romagna = 50 #hp
@@ -115,6 +121,7 @@ def explore_world(world):
 condizione = True
 
 while condizione:
+    print()
     inputpage()
     choice = input("What would you like to do? ")
 
@@ -204,11 +211,13 @@ while condizione:
     elif choice == "2":
         print("Welcome to the Shop!")
         if pass_remaining > 0:
-            print(f"-1. X2Pass (Costs $2{X2Price}) - {pass_remaining} remaining")
+            print(f"-1. X2Pass (Costs ${X2Price}) - {pass_remaining} remaining")
         else:
             print("-1. X2Pass - Out of stock")
-
-        print("-2 Coin Sword |5dmg ")   
+        if coinswordremaining > 0:
+         print(f"-2 Coin Sword |5dmg (Costs ${CoinSword}) - {coinswordremaining} remaining")   
+        else: 
+         print("-2 Coin Sword |5dmg - out of stock")
         print("-3. Leave Shop")
         shop_choice = input("What would you like to buy? ")
         if shop_choice == "1" and pass_remaining > 0:
@@ -223,6 +232,19 @@ while condizione:
         elif shop_choice == "1" and pass_remaining == 0:
             print("X2Pass is out of stock.")
 
+        if shop_choice == "2" and coinswordremaining > 0:
+            if Money >= CoinSword:
+                Money -= CoinSword
+                print("You bought the Coin Sword successfully!")
+                swordequipped = CoinSword
+                coinswordremaining -= 1
+            else:
+                print("Sorry, you don't have enough money to buy this item.")
+        elif shop_choice == "2" and coinswordremaining == 0:
+            print("Coin Sword is out of stock.")
+
+            
+
 
 
 
@@ -230,7 +252,10 @@ while condizione:
 
     # Fights
     elif choice == "3":
-        print("Fighting...")
+        if not swordequipped == "":
+         print("Fighting...")
+        else:
+            print("Non puoi combattere senza una spada, comprala al negozio")
 
 
 
