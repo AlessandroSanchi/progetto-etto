@@ -5,7 +5,7 @@ Money = 104
 bonus_multiplier = 1
 godpass = False # non potenzialmente rotto (dev cheat)
 X2Price = 150  # Prezzo iniziale del raddoppia soldi
-CoinSword =  1
+CoinSwordPrice =  1
 swordequipped = ""
 
 
@@ -215,7 +215,7 @@ while condizione:
         else:
             print("-1. X2Pass - Out of stock")
         if coinswordremaining > 0:
-         print(f"-2 Coin Sword |5dmg (Costs ${CoinSword}) - {coinswordremaining} remaining")   
+         print(f"-2 Coin Sword |5dmg (Costs ${CoinSwordPrice}) - {coinswordremaining} remaining")   
         else: 
          print("-2 Coin Sword |5dmg - out of stock")
         print("-3. Leave Shop")
@@ -233,10 +233,10 @@ while condizione:
             print("X2Pass is out of stock.")
 
         if shop_choice == "2" and coinswordremaining > 0:
-            if Money >= CoinSword:
-                Money -= CoinSword
+            if Money >= CoinSwordPrice:
+                Money -= CoinSwordPrice
                 print("You bought the Coin Sword successfully!")
-                swordequipped = CoinSword
+                swordequipped = CoinSwordPrice
                 coinswordremaining -= 1
             else:
                 print("Sorry, you don't have enough money to buy this item.")
