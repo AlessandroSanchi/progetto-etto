@@ -3,7 +3,7 @@ import time
 
 Money = 104
 bonus_multiplier = 1
-godpass = True # non potenzialmente rotto
+godpass = False # non potenzialmente rotto (dev cheat)
 X2Price = 150  # Prezzo iniziale del raddoppia soldi
 forest_items = {
     "Rock": 1,
@@ -71,7 +71,7 @@ def inputpage():
     print("-2 Shop")
     print("-3 Fight")
     print("-4 Quit")
-    print(f"Money: {Money}$")
+    print(f"Money: ${Money}")
 
 def explore_world(world):
     global Money, cave_unlocked, bonus_multiplier
@@ -105,7 +105,7 @@ def explore_world(world):
         random_item = random.choices(list(items.keys()), weights=weights, k=1)[0]
         money_added = items.get(random_item, 0) * bonus_multiplier
         Money += money_added
-        print(f"You found {random_item}! Added ${money_added} (+${money_added}) Total money: {Money}$")
+        print(f"You found {random_item}! Added ${money_added} (+${money_added}) Total money: ${Money}")
         time.sleep(cooldowntime)
         menu = input("Write whatever to stop exploring or type 'c' to continue: ")
         print()
@@ -204,11 +204,11 @@ while condizione:
     elif choice == "2":
         print("Welcome to the Shop!")
         if pass_remaining > 0:
-            print(f"-1. X2Pass (Costs ${X2Price}) - {pass_remaining} remaining")
+            print(f"-1. X2Pass (Costs $2{X2Price}) - {pass_remaining} remaining")
         else:
             print("-1. X2Pass - Out of stock")
 
-        print("-2 ")    
+        print("-2 Coin Sword |5dmg ")   
         print("-3. Leave Shop")
         shop_choice = input("What would you like to buy? ")
         if shop_choice == "1" and pass_remaining > 0:
