@@ -85,44 +85,7 @@ def format_price(price):
     else:
         return f"${price}"
 
-def idle_fight(enemy_name, enemy_hp):
-    global Coins
-    player_hp = 100  # Player's health points
-    enemy_damage = 10  # Default enemy damage, can vary depending on enemy
-    player_damage = 500000  
-    if swordequipped == "Excalibur":
-        player_damage = 500
-    elif swordequipped == "Legendary Sword":
-        player_damage = 250
-    elif swordequipped == "Coin Sword":
-        player_damage = 50
-    print(f"You encountered a {enemy_name} with {enemy_hp} HP!")
-    time.sleep(1)
 
-    while player_hp > 0 and enemy_hp > 0:
-        # Player attacks
-        enemy_hp -= player_damage
-        print(f"You attacked the {enemy_name} and dealt {player_damage} damage!")
-        time.sleep(1)
-
-        if enemy_hp <= 0:
-            print(f"The {enemy_name} has been defeated!")
-            time.sleep(0.5)
-            loot = random.randint(50, 100) 
-            Coins += loot
-            print(f"You gained £{loot}!")
-            break
-
- 
-
-        # Enemy attacks
-        player_hp -= enemy_damage
-        print(f"The {enemy_name} attacked you and dealt {enemy_damage} damage!")
-        time.sleep(0.5)
-
-        if player_hp <= 0:
-            print("You have been defeated.")
-            break
 
 def inputpage():
     print("-1 Farm")
@@ -162,7 +125,7 @@ def initiate_battle(enemy_name, enemy_hp):
     time.sleep(1)
 
     while player_hp > 0 and enemy_hp > 0:
-        # Giocatore attacca
+        # Attack
         enemy_hp -= player_damage
         print(f"You attacked {enemy_name} and dealt {player_damage} damage!")
         time.sleep(1)
@@ -170,14 +133,17 @@ def initiate_battle(enemy_name, enemy_hp):
         if enemy_hp <= 0:
             print(f"The {enemy_name} died!")
             time.sleep(0.5)
-            loot = random.randint(50, 100)  
+            if enemy_name == "Goblin":
+                loot = random.randint(50,200) 
+            elif enemy_name == "Romagna":
+                loot = random.randint(100,300) 
             Coins += loot
             print(f"Gained {loot} Coins!")
             return loot
 
         enemy_damage = random.randint(enemy_list[enemy_name]["min_damage"], enemy_list[enemy_name]["max_damage"])
 
-        # Nemico attacca
+        # Enemy
         player_hp -= enemy_damage
         print(f"The {enemy_name} attacked and dealt {enemy_damage} damage!")
         time.sleep(0.5)
@@ -565,6 +531,7 @@ while condizione:
     # Quit
     elif choice == "4":
         print("Leaving...")
+        time.sleep(0.5)
         condizione = False
 
 print("Goodbye! Thanks for playing Untitled RNG.")
