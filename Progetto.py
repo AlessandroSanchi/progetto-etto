@@ -4,7 +4,8 @@ import art
 from termcolor import colored
 
 Art= art.text2art("Welcome to untitled farming game") 
-print(Art)
+Art_c = (colored(Art,"magenta"))    
+print(Art_c)
 
 
 # Variables                                                                                                                                                                                                                                                                                                                       E
@@ -117,7 +118,8 @@ power_up_remaining = 1
 
 
 
-def format_price(price):
+def format_price(price)->int:
+    price_c = (colored(price,"yellow"))
     if price >= 1_000_000:
         return f"${price/1_000_000:.1f}M"
     elif price >= 1_000:
@@ -216,7 +218,7 @@ def initiate_battle(enemy_name, enemy_hp,armor_equipped,player_damage):
         # Enemy
         player_hp -= enemy_damage
         enemy_damage_c = colored(enemy_damage,"red")
-        print(f"The {enemy_name} attacked and dealt{enemy_damage_c} damage!")
+        print(f"The {enemy_name} attacked and dealt {enemy_damage_c} damage!")
         time.sleep(0.5)
 
         if player_hp <= 0:
@@ -276,24 +278,24 @@ while condizione:
 
     # Farm
     if choice == "1":
-        print("Select World:")
-        print("1. Forest")
+        print(colored("Select World:","blue"))
+        print(colored("1. Forest","green"))
         if cave_unlocked:
-            print("2. Cave")
+            print(colored("2. Cave","light_cyan"))
         else:
-            print("2. Cave (Unlock for $15K)")
+            print(colored("2. Cave (Unlock for $15K)","light_cyan"))
         if jungle_unlocked:
-            print("3. Jungle")
+            print(colored("3. Jungle","light_green"))
         else:
-            print("3. Jungle (Unlock for $50K)")
+            print(colored("3. Jungle (Unlock for $50K)","light_green"))
         if Desert_unlocked:
-            print("4. Desert")
+            print(colored("4. Desert","yellow"))
         else:
-            print("4. Desert (Unlock for $250K)")
+            print(colored("4. Desert (Unlock for $250K)","yellow"))
         if Void_unlocked:
             print("5. Void")
         else:
-            print("5. Void (Unlock for $1M)")
+            print(colored("5. Void (Unlock for $1M)","magenta"))
         world_choice = input("Enter your choice: ")
 
         # Forest Farming
@@ -351,30 +353,36 @@ while condizione:
         
         # Display X2Pass if available
         if pass_remaining > 0:
-            print(f"-1. X2Pass (Costs ${X2Price}) - {pass_remaining} remaining")
+            x2pass_c = (colored("X2Pass","light_magenta"))
+            X2Price_c = (colored(X2Price,"yellow"))
+            print(f"-1. {x2pass_c} (Costs ${X2Price_c}) - {pass_remaining} remaining")
         else:
-            print("-1. X2Pass - Out of stock")
+            print(f"-1. {x2pass_c} - Out of stock")
 
         # Display new swords
         for index, (sword, details) in enumerate(new_swords.items(), start=2):
             stock = details["stock"]
             price = details["price"]
             damage = details["damage"]
+            sword_c = (colored(sword,"light_cyan"))
+            price_c = (colored(price,"yellow"))
             if stock > 0:
-                print(f"-{index}. {sword} (Costs {format_price(price)}) - {stock} remaining, Damage: {damage}")
+                print(f"-{index}. {sword_c} (Costs {format_price(price)}) - {stock} remaining, Damage: {damage}")
             else:
-                print(f"-{index}. {sword} - Out of stock")
+                print(f"-{index}. {sword_c} - Out of stock")
 
         # Display power-ups
         for index, (power_up, details) in enumerate(power_ups.items(), start=len(new_swords) + 2):
             stock = details["stock"]
             price = details["price"]
+            power_up_c = (colored(power_up,"green"))
+            price_c = (colored(price,"yellow"))
             if stock > 0:
                 if "multiplier" in details:
                     multiplier = details["multiplier"]
-                    print(f"-{index}. {power_up} (Costs {format_price(price)}) - {stock} remaining, Multiplier: {multiplier}")
+                    print(f"-{index}. {power_up_c} (Costs {format_price(price)}) - {stock} remaining, Multiplier: {multiplier}")
                 elif "activate_godpass" in details:
-                    print(f"-{index}. {power_up} (Costs {format_price(price)}) - {stock} remaining, Activates Godpass")
+                    print(f"-{index}. {power_up_c} (Costs {format_price(price)}) - {stock} remaining, Activates Godpass")
             else:
                 print(f"-{index}. {power_up} - Out of stock")
 
@@ -383,10 +391,11 @@ while condizione:
             stock = details["stock"]
             price = details["price"]
             hp = details["hp"]
+            armor_c = (colored(armor_name,"light_red"))
             if stock > 0:
-                print(f"-{index}. {armor_name} (Costs {format_price(price)}) - {stock} remaining, HP: {hp}")
+                print(f"-{index}. {armor_c} (Costs {format_price(price)}) - {stock} remaining, HP: {hp}")
             else:
-                print(f"-{index}. {armor_name} - Out of stock")
+                print(f"-{index}. {armor_c} - Out of stock")
 
         shop_choice = input("What would you like to buy? ")
 
@@ -495,26 +504,26 @@ while condizione:
     # Fights
     elif choice == "3":
         if not swordequipped == "":
-            print("Select World:")
-            print("1. Forest")
+            print(colored("Select World:","blue"))
+            print(colored("1. Forest","green"))
             if CaveTicket:
-                print("2. Cave")
+                print(colored("2. Cave","light_cyan"))
             else:
-                print("2. Cave (Unlock for £15K)")
+                print(colored("2. Cave (Unlock for £15K)","light_cyan"))
             if JungleTicket:
-                print("3. Jungle")
+                print(colored("3. Jungle","light_green"))
             else:
-                print("3. Jungle (Unlock for £50K)")
+                print(colored("3. Jungle (Unlock for £50K)","light_green"))
             if DesertTicket:
-                print("4. Desert")
+                print(colored("4. Desert","yellow"))
             else:
-                print("4. Desert (Unlock for £250K)")
+                print(colored("4. Desert (Unlock for £250K)","yellow"))
             if VoidTicket:
-                print("5. Void")
+                print(colored("5. Void","magenta"))
             else:
-                print("5. Void (Unlock for £1M)")
+                print(colored("5. Void (Unlock for £1M)","magenta"))
             
-            world_choice = input("Enter your choice: ")
+            world_choice = input(colored("Enter your choice: ","cyan"))
             
             if world_choice == "1":
                 print("Entering the forest...")
