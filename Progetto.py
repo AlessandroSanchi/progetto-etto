@@ -119,13 +119,17 @@ power_up_remaining = 1
 
 
 def format_price(price)->int:
-    price_c = (colored(price,"yellow"))
     if price >= 1_000_000:
-        return f"${price/1_000_000:.1f}M"
+        price_c = f"${price/1_000_000:.1f}M"
+        price_c = (colored(price_c,"yellow"))
+        return price_c
     elif price >= 1_000:
-        return f"${price/1_000:.1f}K"
+        price_c = f"${price/1_000:.1f}K"
+        price_c = (colored(price_c,"yellow"))
+        return price_c
     else:
-        return f"${price}"
+        price_c = (colored(price,"yellow"))
+        return f"${price_c}"
 
 
 
@@ -274,7 +278,7 @@ def explore_world(world):
 while condizione:
     print("---------------------")
     inputpage()
-    choice = input("What would you like to do? ")
+    choice = input(colored("What would you like to do? ","red"))
 
     # Farm
     if choice == "1":
@@ -293,10 +297,10 @@ while condizione:
         else:
             print(colored("4. Desert (Unlock for $250K)","yellow"))
         if Void_unlocked:
-            print("5. Void")
+            print(colored("5. Void","magenta"))
         else:
             print(colored("5. Void (Unlock for $1M)","magenta"))
-        world_choice = input("Enter your choice: ")
+        world_choice = input(colored("Enter your choice: ","light_cyan"))
 
         # Forest Farming
         if world_choice == "1":
@@ -353,9 +357,10 @@ while condizione:
         
         # Display X2Pass if available
         if pass_remaining > 0:
+            dollaro_c = (colored("$","yellow"))
             x2pass_c = (colored("X2Pass","light_magenta"))
             X2Price_c = (colored(X2Price,"yellow"))
-            print(f"-1. {x2pass_c} (Costs ${X2Price_c}) - {pass_remaining} remaining")
+            print(f"-1. {x2pass_c} (Costs {dollaro_c}{X2Price_c}) - {pass_remaining} remaining")
         else:
             print(f"-1. {x2pass_c} - Out of stock")
 
@@ -546,7 +551,7 @@ while condizione:
                 while CaveTicket:
                     enemy_list = ["Bat", "Golem"]
                     random_enemy = random.choice(enemy_list)
-                    coins_gained = initiate_battle(random_enemy, random.randint(300, 800), armor_equipped,player_damage)
+                    coins_gained = initiate_battle(random_enemy, random.randint(300, 500), armor_equipped,player_damage)
                     Coins += coins_gained
                     user_input = input("Write 'E' to stop fighting: ")
                     if user_input.lower() == "e":
@@ -562,7 +567,7 @@ while condizione:
                 while JungleTicket:
                     enemy_list = ["Snake", "Tiger"]
                     random_enemy = random.choice(enemy_list)
-                    coins_gained = initiate_battle(random_enemy, random.randint(1000, 2100), armor_equipped,player_damage)
+                    coins_gained = initiate_battle(random_enemy, random.randint(500, 1000), armor_equipped,player_damage)
                     Coins += coins_gained
                     user_input = input("Write 'E' to stop fighting: ")
                     if user_input.lower() == "e":
@@ -576,7 +581,7 @@ while condizione:
                 while DesertTicket:
                     enemy_list = ["Scorpion", "Mummy"]
                     random_enemy = random.choice(enemy_list)
-                    coins_gained = initiate_battle(random_enemy, random.randint(2500, 4000), armor_equipped,player_damage)
+                    coins_gained = initiate_battle(random_enemy, random.randint(1200, 1600), armor_equipped,player_damage)
                     Coins += coins_gained
                     user_input = input("Write 'E' to stop fighting: ")
                     if user_input.lower() == "e":
@@ -590,7 +595,7 @@ while condizione:
                 while VoidTicket:
                     enemy_list = ["Void Beast", "Shadow Entity"]
                     random_enemy = random.choice(enemy_list)
-                    coins_gained = initiate_battle(random_enemy, random.randint(1000, 5000), armor_equipped,player_damage)
+                    coins_gained = initiate_battle(random_enemy, random.randint(2000, 5000), armor_equipped,player_damage)
                     Coins += coins_gained
                     user_input = input("Write 'E' to stop fighting: ")
                     if user_input.lower() == "e":
